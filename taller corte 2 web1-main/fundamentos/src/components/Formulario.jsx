@@ -3,9 +3,15 @@ import {nanoid} from 'nanoid'
 import {firebase} from '../firebase'
 
 const Formulario = () => {
-    const [fruta, setFruta] = React.useState('')
-    const [descripcion, setDescripcion] = React.useState('')
-    const [listaFrutas, setListaFrutas] = React.useState([])
+    const [nombres, setnombres] = React.useState('')
+    const [apellidos, setapellidos] = React.useState('')
+    const [telefono, settelefono] = React.useState('')
+    const [cedula, setcedula] = React.useState('')
+    const [correo, setcorreo] = React.useState('')
+    const [direccion, setdireccion] = React.useState('')
+    const [nacionalidad, setnacionalidad] = React.useState('')
+    //aqui iba listaFrutas const [listaFrutas, setListaFrutas] = React.useState([])
+    const [listaformulario, setlistaformulario] = React.useState([])
     const [id, setId] = React.useState('')
     const [modoEdicion, setModoEdicion] = React.useState(false)
     const [error, setError] = React.useState(null)
@@ -14,15 +20,15 @@ const Formulario = () => {
          const obtenerDatos= async () =>{
              try{
                  const db = firebase.firestore()
-                 const data = await db.collection('frutas').get()
+                 const data = await db.collection('personas').get()
                  const arrayData= data.docs.map(item => (
                      {
                          id: item.id, ... item.data()
                      }
                  ))
                  //console.log(arrayData)
-
-                 setListaFrutas(arrayData)
+                 //aqui iba setlistafrutas
+                 setlistaformulario(arrayData)
 
              }catch(error){
                  console.log(error)
@@ -32,37 +38,79 @@ const Formulario = () => {
          obtenerDatos();
     })
 
-
-    const guardarFrutas = async (e) =>{
+    //aqui iba guardar fruta
+    const guardarpersona = async (e) =>{
         e.preventDefault()
 
-        if(!fruta.trim()){
-           setError('Digite la Fruta')
+        if(!nombres.trim()){
+           setError('Digite sus nombres')
             return
         }
 
-        if(!descripcion.trim()){
-            setError('Digite la Descripción')
+        if(!apellidos.trim()){
+            setError('Digite sus apellidos')
+            return
+        }
+
+        if(!telefono.trim()){
+            setError('Digite su telefono')
+            return
+        }
+
+        if(!cedula.trim()){
+            setError('Digite su cedula')
+            return
+        }
+
+        if(!correo.trim()){
+            setError('Digite su correo')
+            return
+        }
+        
+        if(!direccion.trim()){
+            setError('Digite su direccion')
+            return
+        }
+
+        if(!nacionalidad.trim()){
+            setError('Digite su nacionalidad')
             return
         }
 
         try{
             const db = firebase.firestore()
-            const nuevaFruta = {
-                nombreFruta: fruta,
-                nombreDescripcion: descripcion
+            //aqui iba nueva fruta
+            const nuevapersona = {
+
+                //aqui iba nombre fruta
+                persona_nombre: nombres,
+                persona_apellido: apellidos,
+                persona_telefono: telefono,
+                persona_cedula: cedula,
+                persona_correo: correo,
+                persona_direccion: direccion,
+                persona_nacionalidad: nacionalidad
             }
+            //despues de collection iba ('frutas')
+            const data = await db.collection('personas').add(nuevapersona)
 
-            const data = await db.collection('frutas').add(nuevaFruta)
-
-            setListaFrutas([
-                ... listaFrutas,
-                {id:nanoid(), nombreFruta: fruta, nombreDescripcion: descripcion}
+            setlistaformulario([
+                //aqui iba ... listaFrutas
+                ... listaformulario,
+                {id:nanoid(), persona_nombre: nombres, persona_apellido: apellidos, persona_telefono: telefono,
+                    persona_cedula: cedula, persona_correo: correo, persona_direccion: direccion,
+                     persona_nacionalidad: nacionalidad}
             ])
 
             e.target.reset()
-            setFruta('')
-            setDescripcion('')
+            //aqui iba set frutas
+            setnombres('')
+            setapellidos('')
+            settelefono('')
+            setcedula('')
+            setcorreo('')
+            setdireccion('')
+            setnacionalidad('')
             setError(null)
         }catch(error){
             console.log(error)
@@ -71,39 +119,81 @@ const Formulario = () => {
     }
 
     const editar = item =>{
-        setFruta(item.nombreFruta)
-        setDescripcion(item.nombreDescripcion)
+        setnombres(item.persona_nombre)
+        setapellidos(item.persona_apellido)
+        settelefono(item.persona_telefono)
+        setcedula(item.persona_cedula)
+        setcorreo(item.persona_correo)
+        setdireccion(item.persona_direccion)
+        setnacionalidad(item.persona_nacionalidad)
         setModoEdicion(true)
         setId(item.id)
     }
-
+    //aqui iba editarFrutas
     const editarFrutas = async e =>{
         e.preventDefault()
 
-        if(!fruta.trim()){
-            setError('Digite la Fruta')
+        if(!nombres.trim()){
+            setError('Digite sus nombres')
              return
          }
  
-         if(!descripcion.trim()){
-             setError('Digite la Descripción')
+         if(!apellidos.trim()){
+             setError('Digite sus apellidos')
+             return
+         }
+ 
+         if(!telefono.trim()){
+             setError('Digite su telefono')
+             return
+         }
+ 
+         if(!cedula.trim()){
+             setError('Digite su cedula')
+             return
+         }
+ 
+         if(!correo.trim()){
+             setError('Digite su correo')
+             return
+         }
+         
+         if(!direccion.trim()){
+             setError('Digite su direccion')
+             return
+         }
+ 
+         if(!nacionalidad.trim()){
+             setError('Digite su nacionalidad')
              return
          }
 
          try{
              const db = firebase.firestore()
-             await db.collection('frutas').doc(id).update({
-                 nombreFruta:fruta,
-                 nombreDescripcion:descripcion
+             await db.collection('personas').doc(id).update({
+                persona_nombre: nombres,
+                persona_apellido: apellidos,
+                persona_telefono: telefono,
+                persona_cedula: cedula,
+                persona_correo: correo,
+                persona_direccion: direccion,
+                persona_nacionalidad: nacionalidad
              })
         
-             const arrayEditado = listaFrutas.map(
-                item => item.id ===id ? {id:id, nombreFruta:fruta, nombreDescripcion: descripcion}: item
+             const arrayEditado = listaformulario.map(
+                item => item.id ===id ? {id:id, persona_nombre: nombres, persona_apellido: apellidos, persona_telefono: telefono,
+                    persona_cedula: cedula, persona_correo: correo, persona_direccion: direccion,
+                     persona_nacionalidad: nacionalidad}: item
             )
     
-            setListaFrutas(arrayEditado)
-            setFruta('')
-            setDescripcion('')
+            setlistaformulario(arrayEditado)
+            setnombres('')
+            setapellidos('')
+            settelefono('')
+            setcedula('')
+            setcorreo('')
+            setdireccion('')
+            setnacionalidad('')
             setId('')
             setModoEdicion(false)
             setError(null)
@@ -118,9 +208,9 @@ const Formulario = () => {
     const eliminar = async id =>{
         try{
             const db = firebase.firestore()
-            await db.collection('frutas').doc(id).delete()
-            const aux = listaFrutas.filter(item => item.id !== id)
-            setListaFrutas(aux)
+            await db.collection('personas').doc(id).delete()
+            const aux = listaformulario.filter(item => item.id !== id)
+            set(aux)
         }catch(error){
             console.log(error)
         }
