@@ -267,59 +267,53 @@ const Formulario = () => {
                     <input 
                     className='form-control mb-2'
                     type = "text"
-                    placeholder='Ingrese Fruta'
-                    onChange={(e)=> setFruta(e.target.value)}
-                    value = {fruta}
+                    placeholder='Ingrese sus Nombres'
+                    onChange={(e)=> setnombres(e.target.value)}
+                    value = {nombres}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese sus Apellidos'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> setapellidos(e.target.value)}
+                    value={apellidos}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese su Telefono'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> settelefono(e.target.value)}
+                    value={telefono}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese su Cedula'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> setcedula(e.target.value)}
+                    value={cedula}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese su Correo'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> setcorreo(e.target.value)}
+                    value={correo}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese su Direccion'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> setdireccion(e.target.value)}
+                    value={direccion}
                     />
                     <input 
                     className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
+                    placeholder='Ingrese su Nacionnalidad'
                     type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
+                    onChange={(e)=> setnacionalidad(e.target.value)}
+                    value={nacionalidad}
                     />
-                    <input 
-                    className='form-control mb-2'
-                    placeholder='Ingrese Descripción'
-                    type="text"
-                    onChange={(e)=> setDescripcion(e.target.value)}
-                    value={descripcion}
-                    />
+                    
                     
 
                     {
