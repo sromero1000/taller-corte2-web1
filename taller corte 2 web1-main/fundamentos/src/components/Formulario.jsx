@@ -233,11 +233,11 @@ const Formulario = () => {
 
   return (
     <div className='container mt-5'>
-        <h1 className='text-center'>CRUD BÁSICO</h1>
+        <h1 className='text-center'>FORMULARIO</h1>
         <hr/>
         <div className='row'>
             <div className='col-8'>
-                <h4 className='text-center'>Listado de Frutas</h4>
+                <h4 className='text-center'>Listado de personas</h4>
                 <ul className='list-group'>
                     {
                         listaFrutas.map(item=>(
