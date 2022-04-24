@@ -39,7 +39,7 @@ const Formulario = () => {
     })
 
     //aqui iba guardar fruta
-    const guardarpersona = async (e) =>{
+    const guardarpersonas = async (e) =>{
         e.preventDefault()
 
         if(!nombres.trim()){
@@ -130,7 +130,7 @@ const Formulario = () => {
         setId(item.id)
     }
     //aqui iba editarFrutas
-    const editarFrutas = async e =>{
+    const editarpersonas = async e =>{
         e.preventDefault()
 
         if(!nombres.trim()){
@@ -220,9 +220,14 @@ const Formulario = () => {
 
     const cancelar = () =>{
         setModoEdicion(false)
-        setFruta('')
-        setId('')
-        setDescripcion('')
+        setnombres('')
+            setapellidos('')
+            settelefono('')
+            setcedula('')
+            setcorreo('')
+            setdireccion('')
+            setnacionalidad('')
+            setId('')
         setError(null)
     }
 
@@ -237,7 +242,7 @@ const Formulario = () => {
                     {
                         listaFrutas.map(item=>(
                             <li className='list-group-item' key={item.id}>
-                                <span className='lead'>{item.nombreFruta}-{item.nombreDescripcion}</span>
+                                <span className='lead'>{item.persona_nombre}-{item.persona_apellido}-{item.persona_telefono}-{item.persona_cedula}-{item.persona_correo}-{item.persona_direccion}-{item.persona_nacionalidad}</span>
                                 <button className='btn btn-danger btn-sm float-end mx-2' onClick={()=> eliminar(item.id)}>
                                 Eliminar
                                 </button>
@@ -252,10 +257,10 @@ const Formulario = () => {
             <div className='col-4'>
                 <h4 className='text-center'>
                     {
-                        modoEdicion ? 'Editar Frutas' : 'Agregar Frutas'
+                        modoEdicion ? 'Editar personas' : 'Agregar personas'
                     }
                     </h4>
-                <form onSubmit ={modoEdicion ? editarFrutas: guardarFrutas}>
+                <form onSubmit ={modoEdicion ? editarpersonas: guardarpersonas}>
                     {
                         error ? <span className='text-danger'>{error}</span> : null
                     }
@@ -273,6 +278,49 @@ const Formulario = () => {
                     onChange={(e)=> setDescripcion(e.target.value)}
                     value={descripcion}
                     />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    <input 
+                    className='form-control mb-2'
+                    placeholder='Ingrese Descripción'
+                    type="text"
+                    onChange={(e)=> setDescripcion(e.target.value)}
+                    value={descripcion}
+                    />
+                    
 
                     {
                         modoEdicion ?
